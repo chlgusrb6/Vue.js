@@ -1,23 +1,45 @@
 <html>
 
 <head>
- <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
 </head>
 
 <body>
- <div id="app">
+    <div id="app">
         this is a choi.
-        <br>{{message}}
- </div>
- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
- <script>
- const myApp = new Vue({
- el: '#app',    // el(DOM element 의미): HTML에서 id="app"으로 접근 필요
- data: {
- message: 'Cloud!'
+        <br>{{message + '1234'}}
+        <br>
+        <span :title="date">마우스를 가져오세요</span>
+        <br>
+        <span v-if="seen">볼수 있습니다.</span>
+        <span v-else>볼수 없습니다.</span>
+        <br>
+        <ul>
+
+            <li v-for="todo in todos">{{todo.text}}</li>
+
+
+        </ul>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const myApp = new Vue({
+            el: '#app',    // el(DOM element 의미): HTML에서 id="app"으로 접근 필요
+            data: {
+                seen:true,
+                message: 'Cloud!',
+                date: '오늘 날짜:' + new Date().toLocaleDateString(),
+                todos: [
+                    { text: 'JavaScript' },
+                    { text: 'Vue' },
+                    { text: 'Nuxt' }
+                ]
+
             }
         });
- </script>
+    </script>
 </body>
 
 </html>
